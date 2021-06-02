@@ -36,6 +36,8 @@
 
         <!-- Custom CSS File -->
         <link rel="stylesheet" href="style.css" />
+
+        <?php include 'function.php' ?>
     </head>
     <body>
         <!-- Header -->
