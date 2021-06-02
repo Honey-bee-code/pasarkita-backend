@@ -14,7 +14,22 @@ class DBController {
     {
         $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->database);
         if ($this->conn->connect_errno){
-            echo "Gagal terkoneksi ke database".$this->conn->connect_error;
+            echo "<div class='text-center text-danger my-5'><h1>Gagal terkoneksi ke database !</h1><h4>".$this->conn->connect_error."</h4></div>";
+            exit();
         } 
+    }
+
+    public function __destruct()
+    {
+        $this->closeConnection();
+    }
+
+    // for mysqli closing connection
+    protected function closeConnection()
+    {
+        if($this->conn != null){
+            $this->conn->close();
+            $this->conn = null;
+        }
     }
 }
