@@ -24,7 +24,7 @@
             <div class="grid-item <?= $item['item_brand'] ? : 'Brand' ?> border">
                 <div class="item py-2">
                     <div class="product font-rale">
-                        <a href="#"><img src="<?= $item['item_image'] ? : './assets/products/product.jpg' ?>" alt="sayurbayam" class="img-fluid" /></a>
+                        <a href="<?php printf('%s?item_id=%s', 'product.php',$item['item_id']) ?>"><img src="<?= $item['item_image'] ? : './assets/products/product.jpg' ?>" alt="sayurbayam" class="img-fluid" /></a>
                         <div class="text-center">
                             <h6><?= $item['item_name'] ? : 'Tanpa Nama' ?></h6>
                             <div class="rating text-warning font-size-12">

@@ -1,8 +1,15 @@
+<?php
+$item_id = $_GET["item_id"] ? : 1;
+foreach($product->getData() as $item) :
+    if ($item['item_id'] == $item_id) :
+?>
+
+
 <section id="product" class="py-3">
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <img src="./assets/products/sayur/sayurbayam.jpg" alt="sayurbayam" class="img-fluid" />
+                <img src="<?= $item['item_image'] ? : './assets/products/product.jpg' ?>" alt="sayurbayam" class="img-fluid" />
                 <div class="form row pt-4 font-size-16 font-baloo">
                     <div class="col">
                         <button type="submit" class="btn btn-danger form-control">Langsung Beli</button>
@@ -13,8 +20,8 @@
                 </div>
             </div>
             <div class="col-sm-6 py-5">
-                <h4 class="font-baloo font-size-20">Sayur Bayam</h4>
-                <small>dari Ladang Bapak Hamid</small>
+                <h4 class="font-baloo font-size-20"><?= $item['item_name'] ? : 'unknown' ?></h4>
+                <small><?= $item['item_brand'] ? : 'Brand' ?></small>
                 <div class="d-flex">
                     <div class="rating text-warning font-size-12">
                         <span><i class="fas fa-star"></i></span>
@@ -31,15 +38,15 @@
                 <table class="my-3">
                     <tr class="font-rale font-size-14">
                         <td>Harga Tertinggi</td>
-                        <td style="text-decoration-line: line-through !important">Rp 5.000</td>
+                        <td style="text-decoration-line: line-through !important"><?= $item['normal_price'] ? : 0 ?></td>
                     </tr>
                     <tr class="font-rale font-size-14">
                         <td>Harga Pas</td>
-                        <td class="font-size-20 text-danger">Rp <span>3.000</span><small class="text-dark font-size-12">&nbsp;&nbsp;sudah termasuk pajak</small></td>
+                        <td class="font-size-20 text-danger">Rp <span><?= $item['item_price'] ? : 0 ?></span><small class="text-dark font-size-12">&nbsp;&nbsp;sudah termasuk pajak</small></td>
                     </tr>
                     <tr class="font-rale font-size-14">
                         <td>Anda Hemat</td>
-                        <td>Rp <span class="font-size-16 text-danger">2.000</span></td>
+                        <td>Rp <span class="font-size-16 text-danger"><?= $item['normal_price'] - $item['item_price'] ?></span></td>
                     </tr>
                 </table>
                 <!-- Product price End -->
@@ -128,3 +135,8 @@
         </div>
     </div>
 </section>
+
+<?php
+endif;
+endforeach;
+?>
